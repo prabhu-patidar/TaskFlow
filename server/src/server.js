@@ -1,3 +1,5 @@
+import reminderRoutes from './routes/reminderRoutes.js';
+import pushRoutes from './routes/pushRoutes.js';
 import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
@@ -16,6 +18,8 @@ app.use('/api/auth', rateLimit({ windowMs: 15 * 60 * 1000, limit: 100 }));
 app.get('/api/health', (req, res) => res.json({ status: 'ok', service: 'TaskFlow API' }));
 app.use('/api/auth', authRoutes);
 app.use('/api/tasks', taskRoutes);
+app.use('/api/push', pushRoutes);
+app.use('/api/reminders', reminderRoutes);
 app.use(notFound);
 app.use(errorHandler);
 const port = process.env.PORT || 5000;

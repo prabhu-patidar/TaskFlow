@@ -6,6 +6,7 @@ const taskSchema = new mongoose.Schema({
   status: { type: String, enum: ['todo', 'in-progress', 'done'], default: 'todo' },
   priority: { type: String, enum: ['low', 'medium', 'high'], default: 'medium' },
   dueDate: { type: Date, default: null }
+  lastReminderAt: { type: Date, default: null }
 }, { timestamps: true });
 taskSchema.index({ user: 1, createdAt: -1 });
 export default mongoose.model('Task', taskSchema);
